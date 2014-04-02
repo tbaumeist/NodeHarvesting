@@ -2,6 +2,9 @@ package com.tbaumeist.harvesting;
 
 import static org.junit.Assert.*;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import org.junit.Test;
 
 import com.tbaumeist.harvesting.Enums.CORRUPT_NODE_PLACEMENT;
@@ -30,6 +33,9 @@ public class TestCLIArguments {
         String[] strArgs = new String[] { "-p", "0.2", "-s", "1001", "-o", "test.txt", "-f", "test.log", "-i", "graph.dot", "-c", "RandOm" };
         Arguments args = Arguments.Parse(strArgs);
 
+        args.outputFile.close();
+        Files.delete(Paths.get("test.txt"));
+        
         assertTrue(true);
         assertTrue(args.percentCorrupt == 0.2);
         assertTrue(args.seed == 1001);
