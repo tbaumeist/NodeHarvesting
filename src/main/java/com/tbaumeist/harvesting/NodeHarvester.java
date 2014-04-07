@@ -36,6 +36,9 @@ public class NodeHarvester implements Runnable {
     public void run() {
         try {
             Topology top = this.loadTopology(args.inputFile);
+            
+            if(top == null)
+                throw new Exception("Error reading the topology file.");
 
             LOGGER.info("Loaded the graph from " + args.inputFile
                     + ", Number of nodes: " + top.getAllNodes().size());

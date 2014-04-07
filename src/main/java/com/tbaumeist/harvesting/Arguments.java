@@ -61,7 +61,8 @@ public class Arguments {
             b.append(f.getName());
             b.append(" : ");
             try {
-                b.append(f.get(this));
+                Object o = f.get(this);
+                b.append(o == null? "NULL": o);
             } catch (Exception e) {
                 LOGGER.severe(e.getMessage());
             }
